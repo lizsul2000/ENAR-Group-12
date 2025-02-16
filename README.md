@@ -1,5 +1,7 @@
 # Unraveling the Complex Relationship Between Depression and Blood Pressure Control
 
+The project is aimed to explore the role of depression in BP control by examining the confounding and mediating effects of medication use, lifestyle factors, and comorbidities, using NHANES cross-sectional data.​
+
 ## ENAR-Group-12
 **Authors**: Yijun Guo, Daphne (Gaoqianxue) Liu
 
