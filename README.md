@@ -23,6 +23,3 @@ Statistical Analysis Codes: `Subgroup and Mediation Analysis.do`
 
 Creating mediation effect visualization: `Mediation Plot.ipynb`
 
-### Final Report
-
-### Abstract
