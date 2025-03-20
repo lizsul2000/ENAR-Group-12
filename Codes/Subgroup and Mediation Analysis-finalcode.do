@@ -1,5 +1,5 @@
 clear
-import delimited "C:/Users/Yijun/OneDrive - Drexel University/ENAR datafest/Data/nhanes_comp_CLEAN.csv", colrange(2) stringcols(28)
+import delimited "/ENAR datafest/Data/nhanes_comp_CLEAN.csv", colrange(2) stringcols(28)
 
 
 /******************************* Variable recoding ****************************/
