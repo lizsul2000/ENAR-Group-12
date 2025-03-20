@@ -1,5 +1,5 @@
 clear
-import delimited "/ENAR datafest/Data/nhanes_comp_CLEAN.csv", colrange(2) stringcols(28)
+import delimited "C:/Users/Yijun/OneDrive - Drexel University/ENAR datafest/Data/nhanes_comp_CLEAN.csv", colrange(2) stringcols(28)
 
 
 /******************************* Variable recoding ****************************/
@@ -216,14 +216,18 @@ svy: poisson un_bp_control_num i.twoplus_med_num i.diabetes_num i.age_cat_num i.
 svy: gsem (twoplus_med_num <- i.phq9_cat_num i.age_cat_num i.gender_num i.race_ethnicity_num i.smoke_num i.cvd_num i.diabetes_num i.dmdeduc2_num i.dmdmartl_num i.hiq011_num i.huq030_num i.alq101_num i.paq650_num dr1tsodi indfmpir, logit) /// 
 (un_bp_control_num <- i.twoplus_med_num i.phq9_cat_num i.age_cat_num i.gender_num i.race_ethnicity_num i.smoke_num i.cvd_num i.diabetes_num i.dmdeduc2_num i.dmdmartl_num i.hiq011_num i.huq030_num i.alq101_num i.paq650_num dr1tsodi indfmpir, logit), family(binomial)
 
-/* Direct effect*/
-nlcom exp([un_bp_control_num]_b[3.phq9_cat_num])
-
+/*Direct effect*/
+foreach i in 1 2 3 4 5 {
+    nlcom exp([un_bp_control_num]_b[`i'.phq9_cat_num])
+}
 /* Indirect effect */
-nlcom exp([un_bp_control_num]_b[1.twoplus_med_num]) * exp([twoplus_med_num]_b[3.phq9_cat_num]) 	
-
+foreach i in 1 2 3 4 5 {
+    nlcom exp([un_bp_control_num]_b[1.twoplus_med_num]) * exp([twoplus_med_num]_b[`i'.phq9_cat_num])
+}
 /*Total effect*/
-nlcom (exp([un_bp_control_num]_b[3.phq9_cat_num]) + exp([un_bp_control_num]_b[1.twoplus_med_num]) * exp([twoplus_med_num]_b[3.phq9_cat_num]))
+foreach i in 1 2 3 4 5 {
+	nlcom (exp([un_bp_control_num]_b[`i'.phq9_cat_num]) + exp([un_bp_control_num]_b[1.twoplus_med_num]) * exp([twoplus_med_num]_b[`i'.phq9_cat_num]))
+}
 
 
 /** twoplus_med_num ~ binary depression **/
